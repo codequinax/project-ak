@@ -161,9 +161,9 @@ function CategoryCard({ cat, active, onClick }) {
 function GuestInfoCard({ category, subject, year }) {
     const navigate = useNavigate()
     const catMeta = {
-        important: { label: "Important Questions", color: "amber",   emoji: "⭐" },
-        repeated:  { label: "Repeated Questions",  color: "sky",     emoji: "🔁" },
-        recent:    { label: "Recently Added",       color: "emerald", emoji: "🆕" },
+        important: { label: "Important Questions", color: "amber",   icon: Star },
+        repeated:  { label: "Repeated Questions",  color: "sky",     icon: RefreshCw },
+        recent:    { label: "Recently Added",       color: "emerald", icon: Clock3 },
     }
     const meta = catMeta[category]
     const colorMap = {
@@ -180,8 +180,8 @@ function GuestInfoCard({ category, subject, year }) {
             <div className="px-6 py-7 flex flex-col sm:flex-row sm:items-center gap-5">
                 {/* Left: icon + text */}
                 <div className="flex items-start gap-4 flex-1">
-                    <div className={`w-12 h-12 rounded-2xl ${c.bg} ${c.border} border flex items-center justify-center text-xl shrink-0`}>
-                        {meta.emoji}
+                    <div className={`w-12 h-12 rounded-2xl ${c.bg} ${c.border} border flex items-center justify-center shrink-0`}>
+                        <meta.icon className={`w-5 h-5 ${c.text}`} />
                     </div>
                     <div>
                         <div className="flex items-center gap-2 flex-wrap mb-1">
