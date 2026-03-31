@@ -195,7 +195,7 @@ function ReportModal({ question, questionIndex, subject, unit, year, user, onClo
                     <div className="px-5 py-5">
                         <div className="mb-5 px-3.5 py-3 rounded-xl report-question-box">
                             <p className="text-[10px] font-semibold uppercase tracking-wider report-text-muted mb-1.5">Question {questionIndex + 1}</p>
-                            <p className="text-base sm:text-lg text-slate-100 leading-relaxed font-medium">
+                            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-medium">
                                 <MathRenderer
                                     content={
                                         question?.text ||
@@ -292,7 +292,7 @@ function AuthGateModal({ subject, unit, year }) {
                         <div className="text-center mb-6">
                             <h2 className="lr-heading text-xl font-black leading-tight mb-2">Unlock questions</h2>
                             <p className="lr-sub text-sm leading-relaxed">
-                                Sign in free to access all PYQs,<br />solutions and track your progress.
+                                Sign in to access all PYQs,<br />solutions and track your progress.
                             </p>
                         </div>
                         <div className="lr-mobile-card rounded-xl p-4 mb-6 space-y-2.5 border">
@@ -312,10 +312,10 @@ function AuthGateModal({ subject, unit, year }) {
                             onClick={handleGoogleSignIn}
                             className="lr-google-btn w-full flex items-center justify-center gap-3 py-3.5 rounded-xl border text-sm font-semibold transition-all duration-200 active:scale-[0.98]"
                         >
-                            Login / Sign up
+                            Sign in with Google
                         </button>
                         <p className="text-center lr-footer-text text-xs mt-4 leading-relaxed">
-                            No password needed · Always free.
+                            No password needed · Sign in with Google.
                         </p>
                     </div>
                 </div>
@@ -524,7 +524,7 @@ export default function Questions() {
                     <div className="flex-1 min-w-0 overflow-hidden">
 
                         {/* Timer */}
-                        <div className="flex justify-center mb-4 sm:mb-6">
+                        <div className={`flex justify-center mb-4 sm:mb-6 transition-opacity duration-300 ${isGuest ? "opacity-30" : ""}`}>
                             <div className="flex items-center gap-0 rounded-[14px] border border-slate-700/60 bg-slate-800/70 overflow-hidden">
                                 <div className="flex items-center gap-px px-4 py-2.5">
                                     <Zap className="w-3.5 h-3.5 text-slate-400 mr-2 shrink-0" />
@@ -550,7 +550,7 @@ export default function Questions() {
                             </div>
                         </div>
 
-                        {/* Free preview banner — shown to guests in practice mode */}
+                        {/* Preview banner — shown to guests in practice mode */}
                         {isGuest && !filterTag && currentIndex < FREE_PREVIEW_COUNT && (
                             <div className="free-preview-card mb-5 sm:mb-7 relative overflow-hidden rounded-2xl">
                                 {/* animated gradient top bar */}
@@ -569,7 +569,7 @@ export default function Questions() {
                                         </div>
                                         <div>
                                             <div className="flex items-center gap-2 mb-0.5">
-                                                <p className="fp-title text-sm font-black leading-tight">Free Preview</p>
+                                                <p className="fp-title text-sm font-black leading-tight">Preview</p>
                                                 <span className="fp-badge inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full">
                                                     <span className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
                                                     {currentIndex + 1} of {FREE_PREVIEW_COUNT}
@@ -577,8 +577,8 @@ export default function Questions() {
                                             </div>
                                             <p className="fp-subtitle text-xs leading-snug">
                                                 {FREE_PREVIEW_COUNT - currentIndex - 1 > 0
-                                                    ? `${FREE_PREVIEW_COUNT - currentIndex - 1} free question${FREE_PREVIEW_COUNT - currentIndex - 1 > 1 ? "s" : ""} left · Sign in to unlock all`
-                                                    : "Last free question · Sign in to continue"
+                                                    ? `${FREE_PREVIEW_COUNT - currentIndex - 1} preview question${FREE_PREVIEW_COUNT - currentIndex - 1 > 1 ? "s" : ""} left · Sign in to continue`
+                                                    : "Last preview question · Sign in to continue"
                                                 }
                                             </p>
                                         </div>
@@ -589,13 +589,13 @@ export default function Questions() {
                                             const redirect = `/questions/${encodeURIComponent(year)}/${encodeURIComponent(subject)}/${encodeURIComponent(unit)}`
                                             navigate(`/login?redirect=${encodeURIComponent(redirect)}`)
                                         }}
-                                        className="shrink-0 group relative overflow-hidden flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 active:scale-95 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all duration-200 shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50"
+                                        className="fp-cta-btn shrink-0 group relative overflow-hidden flex items-center gap-2 text-sm font-bold px-5 py-2.5 rounded-xl transition-all duration-200 active:scale-95"
                                     >
                                         <span className="relative z-10 flex items-center gap-2">
-                                            Unlock all free
+                                            Sign in to continue
                                             <span className="group-hover:translate-x-0.5 transition-transform duration-150">→</span>
                                         </span>
-                                        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+                                        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-gradient-to-r from-transparent via-white/8 to-transparent" />
                                     </button>
                                 </div>
                             </div>
@@ -620,7 +620,7 @@ export default function Questions() {
                             <p className="text-xs text-slate-600 font-semibold uppercase tracking-wider mb-3 sm:mb-4">
                                 Question {currentIndex + 1}
                             </p>
-                            <p className={`text-base sm:text-lg text-slate-100 leading-relaxed font-medium ${guestBlocked ? "blur-[2px] select-none" : ""}`}>
+                            <p className={`text-base sm:text-lg text-slate-300 leading-relaxed font-medium ${guestBlocked ? "blur-[2px] select-none" : ""}`}>
                                 <MathRenderer
                                     content={
                                         currentQuestion.text ||
@@ -689,7 +689,7 @@ export default function Questions() {
                                 {showSolution ? "Hide Solution" : "Show Solution"}
                             </button>
                             {showSolution && (
-                                <div className={`mt-4 bg-slate-800/60 border border-slate-700/60 p-4 sm:p-6 rounded-2xl text-slate-300 text-sm leading-relaxed ${guestBlocked ? "blur-[2px] select-none" : ""}`}>
+                                <div className={`mt-4 bg-slate-800/60 border border-slate-700/60 p-4 sm:p-6 rounded-2xl text-slate-300 text-base leading-loose ${guestBlocked ? "blur-[2px] select-none" : ""}`}>
                                     <MathRenderer content={currentQuestion.solution} />
                                 </div>
                             )}
