@@ -1,3 +1,4 @@
+
 import { useSearchParams, useNavigate, Link } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import { useState, useEffect } from "react"
@@ -75,12 +76,12 @@ export default function Home() {
     const [offline, setOffline] = useState(false)
 
     const getUser = () => {
-    try {
-        return JSON.parse(localStorage.getItem("pyq_user"))
-    } catch {
-        return null
+        try {
+            return JSON.parse(localStorage.getItem("pyq_user"))
+        } catch {
+            return null
+        }
     }
-}
     const [userTick, setUserTick] = useState(0)
     const user = getUser()
 
@@ -278,7 +279,7 @@ export default function Home() {
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-sky-500">Score Higher.</span>
                         </h1>
                         <p className="text-slate-400 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0 hero-sub">
-                            Unit-wise PYQs from all AKTU subjects — organized, searchable, and always free.
+                            Unit-wise PYQs from all AKTU subjects — organized and searchable.
                         </p>
                         <div className="flex flex-col gap-4">
                             <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center lg:justify-start">
