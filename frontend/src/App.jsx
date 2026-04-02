@@ -18,9 +18,8 @@ function App(){
                 <Route path="/questions/:year/:subject/:unit" element={<Questions/>}/>
 
                 {/* Auth — Google sign-in only */}
-                <Route path="/auth"     element={<Auth/>}/>
-                <Route path="/login"    element={<Auth/>}/>
-                <Route path="/register" element={<Auth/>}/>
+                <Route path="/auth"  element={<Auth/>}/>
+                <Route path="/login" element={<Auth/>}/>
             </Routes>
 
         </BrowserRouter>
