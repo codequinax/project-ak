@@ -1,11 +1,10 @@
-
 import { useSearchParams, useNavigate, Link } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import { useState, useEffect } from "react"
 import {
-    BookOpen, FlaskConical, Zap, Calculator,
-    Database, Monitor, GitBranch, Globe,
-    Cpu, Code2, Cloud, BrainCircuit,
+    BookOpen, FlaskConical, Zap, Calculator, Atom,
+    Database, Monitor, GitBranch, Globe, CircuitBoard,
+    Cpu, Code2, Cloud, BrainCircuit, Leaf, Cog, Users,
     Rocket, Bot, Network, ShieldCheck,
     ChevronRight, ArrowRight, GraduationCap,
     BarChart3, Layers, BookMarked,
@@ -13,8 +12,12 @@ import {
 } from "lucide-react"
 
 const subjectIcons = {
-    "Maths": Calculator, "Physics": FlaskConical, "Chemistry": FlaskConical, "Electrical": Zap,
-    "DBMS": Database, "OS": Monitor, "DSA": GitBranch, "CN": Globe,
+    // First Year
+    "Math-1": Calculator, "Physics": Atom, "Chemistry": FlaskConical, "Electrical": Zap,
+    "Electronics": CircuitBoard, "PPS": Code2, "EVS": Leaf, "Mechanical": Cog,
+    "Soft skills": Users,
+    // Second Year+
+    "Maths": Calculator, "DBMS": Database, "OS": Monitor, "DSA": GitBranch, "CN": Globe,
     "DAA": BarChart3, "Compiler": Cpu, "Web Tech": Code2, "Cloud": Cloud,
     "Project": Rocket, "AI": Bot, "ML": BrainCircuit, "Security": ShieldCheck,
 }
