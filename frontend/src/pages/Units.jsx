@@ -3,15 +3,24 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useState, useRef, useEffect } from "react"
 import { getUnitProgress } from "../utils/progress"
 import { getQuestions } from "../services/api"
-import { ArrowLeft, BookOpen, Star, RefreshCw, Clock3, ChevronDown } from "lucide-react"
+import {
+    ArrowLeft, BookOpen, Star, RefreshCw, Clock3, ChevronDown,
+    Calculator, Atom, FlaskConical, Zap, CircuitBoard, Code2, Leaf, Cog, Users,
+    Database, Monitor, GitBranch, Globe, BarChart3, Cpu, Cloud,
+    Rocket, Bot, BrainCircuit, ShieldCheck
+} from "lucide-react"
 
 const units = ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5"]
 
 const subjectIcons = {
-    "Maths": "∑", "Physics": "⚛", "Chemistry": "⚗", "Electrical": "⚡",
-    "DBMS": "🗄", "OS": "🖥", "DSA": "⛓", "CN": "🌐",
-    "DAA": "📊", "Compiler": "⚙", "Web Tech": "🕸", "Cloud": "☁",
-    "Project": "🚀", "AI": "🤖", "ML": "🧠", "Security": "🔒"
+    // First Year
+    "Math-1": Calculator, "Physics": Atom, "Chemistry": FlaskConical, "Electrical": Zap,
+    "Electronics": CircuitBoard, "PPS": Code2, "EVS": Leaf, "Mechanical": Cog,
+    "Soft skills": Users,
+    // Second Year+
+    "Maths": Calculator, "DBMS": Database, "OS": Monitor, "DSA": GitBranch, "CN": Globe,
+    "DAA": BarChart3, "Compiler": Cpu, "Web Tech": Code2, "Cloud": Cloud,
+    "Project": Rocket, "AI": Bot, "ML": BrainCircuit, "Security": ShieldCheck,
 }
 
 // ── Category cards config ─────────────────────────────────────────────────────
@@ -224,7 +233,7 @@ export default function Units() {
 
     const { year, subject } = useParams()
     const navigate          = useNavigate()
-    const icon              = subjectIcons[subject] || "📖"
+    const SubjectIcon       = subjectIcons[subject] || BookOpen
     const [activeCard, setActiveCard] = useState(null)
     const unitsRef = useRef(null)
 
@@ -338,8 +347,8 @@ export default function Units() {
 
                 {/* Header */}
                 <div className="flex items-center gap-4 sm:gap-5 mb-8 sm:mb-10">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-2xl sm:text-3xl shrink-0">
-                        {icon}
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center shrink-0">
+                        <SubjectIcon className="w-6 h-6 sm:w-8 sm:h-8 text-indigo-400" />
                     </div>
                     <div>
                         <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-100 leading-tight">{subject}</h1>
