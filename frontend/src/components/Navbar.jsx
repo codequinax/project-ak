@@ -91,7 +91,7 @@ export default function Navbar() {
                                 <LogIn className="w-3.5 h-3.5" />
                                 Login
                             </Link>
-                            <Link to="/register" className="join-btn flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-sm font-semibold text-white transition-all duration-200">
+                            <Link to="/login" className="join-btn flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-sm font-semibold text-white transition-all duration-200">
                                 <Sparkles className="w-3.5 h-3.5 text-indigo-300" />
                                 Join free
                             </Link>
@@ -145,7 +145,7 @@ export default function Navbar() {
                                 <LogIn className="w-3.5 h-3.5" />
                                 Login
                             </Link>
-                            <Link to="/register" className="join-btn flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-semibold text-white transition-all duration-200">
+                            <Link to="/login" className="join-btn flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-semibold text-white transition-all duration-200">
                                 <Sparkles className="w-3.5 h-3.5 text-indigo-300" />
                                 Join
                             </Link>
